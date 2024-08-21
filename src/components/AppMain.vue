@@ -1,11 +1,15 @@
 <script>
 import axios from 'axios';
+import ProjectCard from './ProjectCard.vue';
+
 export default{
     data(){
         return {
-            message: 'AppMain',
             projects: [],
         }
+    },
+    components:{
+        ProjectCard
     },
     methods: {
         getProjects(){
@@ -30,10 +34,14 @@ export default{
 </script>
 
 <template>
-    <h1> {{ message }} </h1>
-    <ul>
-        <li v-for="project in projects" key="project.id"> {{ project.title }} </li>
-    </ul>
+    <div class="container">
+        <h1 class="text-center mb-4"> Projects List </h1>
+        <div class="container-fluid p-4">
+            <div class="row justify-content-center">
+                <ProjectCard class="col-8" v-for="project in projects" key="project.id" :title="project.title" :user="project.user" :date="project.date" :type="project.type" :description="project.description"/>
+            </div>
+        </div>
+    </div>
 </template>
 
 <style scoped lang="scss">

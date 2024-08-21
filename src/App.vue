@@ -23,7 +23,7 @@ import AppMain from './components/AppMain.vue';
   <AppFooter />
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
   @use '../node_modules/bootstrap/scss/bootstrap.scss';
   @use './style/general.scss';
   @use './style/partials/variables' as *;
