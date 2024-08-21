@@ -35,7 +35,7 @@ export default{
 
 <template>
     <div class="container">
-        <h1 class="text-center mb-4"> Projects List </h1>
+        <h1 class="text-center mb-2 p-3"> Projects List </h1>
         <div class="container-fluid p-4">
             <div class="row justify-content-center">
                 <ProjectCard class="col-8" v-for="project in projects" key="project.id" :title="project.title" :user="project.user" :date="project.date" :type="project.type" :description="project.description"/>
