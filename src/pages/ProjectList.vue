@@ -31,6 +31,7 @@ export default{
                 this.currentPage = response.data.results.current_page;
             })
             .catch((error) => {
+                this.$router.push({ name: '404-not-found' });
                 console.log(error);
             }); 
         }
@@ -46,7 +47,9 @@ export default{
         <h1 class="text-center mb-2 p-3"> Projects List </h1>
         <div class="container-fluid p-4">
             <div class="row justify-content-center">
-                <ProjectCard class="col-8" v-for="project in projects" key="project.id" :title="project.title" :user="project.user" :date="project.date" :type="project.type" :description="project.description"/>
+                <router-link v-for="project in projects" key="project.id" :to="{ name: 'single-project', params: {id: project.id} }" class="text-decoration-none">
+                    <ProjectCard class="col-8" :title="project.title" :user="project.user" :date="project.date" :type="project.type" :description="project.description"/>
+                </router-link>
 
                 <!-- pageIndex -->
                 <div class="col-8 d-flex justify-content-center">

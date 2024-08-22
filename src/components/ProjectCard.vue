@@ -6,7 +6,7 @@ export default{
         }
     },
     props: {
-        // title, user, image, date, type, description, technologies
+        // title, user, image, date, type, description, technologies, github
         title: {
             tipeOf: String,
             required: true
@@ -14,6 +14,10 @@ export default{
         user: {
             tipeOf: Object,
             required: true
+        },
+        image: {
+            tipeOf: String,
+            required: false
         },
         date: {
             tipeOf: String,
@@ -27,6 +31,14 @@ export default{
             tipeOf: String,
             required: false
         },
+        technologies: {
+            tipeOf: Object,
+            required: false
+        },
+        github: {
+            tipeOf: String,
+            required: false
+        },
     }
 }
 </script>
@@ -35,15 +47,27 @@ export default{
     <div class="container">
         <article class="card mb-3">
             <div class="card-body">
-                <h5 class="card-title fw-bold">{{ title }}</h5>
-                <h6 class="card-subtitle mb-2 text-body-secondary fst-italic mb-2">{{ user.name }}</h6>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <p class="card-text mb-0"><small class="text-body-secondary">{{ date }}</small></p>
-                    <span class="badge" :style="{'background-color': type.color }">{{ type.name }}</span>
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <div>
+                        <h5 class="card-title fw-bold mb-2">{{ title }}</h5>
+                        <h6 class="card-subtitle text-body-secondary fst-italic">{{ user.name }}</h6>
+                    </div>
+                    <span :class="($route.name === 'single-project') ? 'badge fs-6' : 'badge'" :style="{'background-color': type.color }">{{ type.name }}</span>
                 </div>
+                <p class="card-text mb-2"><small class="text-body-secondary">{{ date }}</small></p>
                 <p class="card-text p-1">"{{ description }}"</p>
             </div>
-            
+            <div v-if="$route.name === 'single-project'" class="d-flex justify-content-between p-3 mt-2">
+                <div>
+                    <span v-for="technology in technologies" key="technology.id" class="badge rounded-pill m-1" :style="{'background-color': technology.color}">
+                    {{ technology.name }}
+                    </span>
+                </div>
+                <p class="mb-0">Github: {{ github }}</p>
+            </div>
+            <div v-if="$route.name === 'single-project'" class="card-image d-flex justify-content-center p-3 mt-2">
+                <img :src="image" :alt="title + ' screen'" class="rounded">
+            </div>
         </article>
     </div>
 </template>
