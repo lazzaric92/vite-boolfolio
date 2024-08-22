@@ -1,6 +1,6 @@
 <script>
 import axios from 'axios';
-import ProjectCard from './ProjectCard.vue';
+import ProjectCard from '../components/ProjectCard.vue';
 
 export default{
     data(){
@@ -50,9 +50,15 @@ export default{
 
                 <!-- pageIndex -->
                 <div class="col-8 d-flex justify-content-center">
-                    <ul class="list-unstyled d-flex align-items-center">
+                    <ul class="list-unstyled d-flex align-items-center" v-if="pageIndex.length > 0">
+                        <li>
+                            <a href="#" class="text-black">&larr; Previous</a>
+                        </li>
                         <li v-for="page in pageIndex" class="mx-1">
                             <a href="#" class="text-black" @click="getProjects(page)">{{ page }}</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-black">Next &rarr;</a>
                         </li>
                     </ul>
                 </div>
