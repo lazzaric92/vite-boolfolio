@@ -71,12 +71,23 @@ export default{
                         <li class="btn btn-sm me-1">
                             <a href="#" class="text-black" @click="prevPage()">&larr; Previous</a>
                         </li>
+
+                        <li v-if="this.currentPage > 4" class="ms-2 me-1"> ...</li>
+
                         <template v-for="page in pageIndex">
-                            <li class="mx-1 btn btn-sm" v-if="(page > this.currentPage - 3 && page < this.currentPage + 3) || (page > this.lastPage - 2)" :class="(page === this.currentPage) ? 'clicked' : ''">
+                            <li class="mx-1 btn btn-sm" v-if="(page > this.currentPage - 3 && page < this.currentPage + 3)" :class="(page === this.currentPage) ? 'clicked' : ''">
                                 <a href="#" class="text-black" @click="getProjects(page)">{{ page }}</a>
                             </li>
                         </template>
-                        
+
+                        <li v-if="this.lastPage > (this.currentPage + 5)" class="ms-1 me-2"> ...</li>
+
+                        <template v-for="page in pageIndex">
+                            <li class="mx-1 btn btn-sm" v-if="(page > this.lastPage - 2) && !(this.currentPage >= this.lastPage - 3)" :class="(page === this.currentPage) ? 'clicked' : ''">
+                                <a href="#" class="text-black" @click="getProjects(page)">{{ page }}</a>
+                            </li>
+                        </template>
+
                         <li class="btn btn-sm ms-1">
                             <a href="#" class="text-black" @click="nextPage()">Next &rarr;</a>
                         </li>
@@ -91,7 +102,7 @@ export default{
 @use '../style/partials/variables' as *;
 
     .page-index {
-        li {
+        li.btn {
             background-color: $primary;
             box-shadow: 0px 2px 5px rgba(0,0,0, 0.5);
             opacity: 0.85;
