@@ -1,4 +1,6 @@
 <script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 export default{
     data(){
         return {
@@ -63,7 +65,10 @@ export default{
                     {{ technology.name }}
                     </span>
                 </div>
-                <p class="mb-0">Github: {{ github }}</p>
+                <p class="mb-0">
+                    <span class="me-1 fs-5"><font-awesome-icon icon="fa-brands fa-github" /></span> 
+                    {{ github }}
+                </p>
             </div>
             <div v-if="$route.name === 'single-project'" class="card-image d-flex justify-content-center p-3 mt-2">
                 <img :src="image" :alt="title + ' screen'" class="rounded">

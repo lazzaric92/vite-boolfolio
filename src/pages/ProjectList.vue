@@ -115,5 +115,9 @@ export default{
                 text-decoration: none;
             }
         }
+
+        li.btn.btn-sm:focus{
+            border: 1.3px dashed #127557;
+        }
     }
 </style>
