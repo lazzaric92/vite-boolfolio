@@ -61,7 +61,7 @@ export default{
         <h1 class="text-center mb-2 p-3"> Projects List </h1>
         <div class="container-fluid p-4">
             <div class="row justify-content-center">                
-                <ProjectCard v-for="project in projects" key="project.id" class="col-8" :project="project"/>
+                <ProjectCard v-for="project in projects" key="project.id" class="col-8" :singleProject="project"/>
 
                 <!-- || pageIndex -->
                 <div class="col-8 d-flex justify-content-center">

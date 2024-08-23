@@ -37,7 +37,7 @@ export default{
 <template>
     <div class="container p-4">
         <div class="row justify-content-center">
-            <ProjectCard v-if="project !== null" class="col-10" :project="project"/>
+            <ProjectCard v-if="project !== null" class="col-10" :singleProject="project"/>
         </div>
     </div>
 </template>
